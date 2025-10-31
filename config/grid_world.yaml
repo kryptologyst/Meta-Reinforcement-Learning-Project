@@ -1,0 +1,33 @@
+experiment:
+  name: "meta_rl_grid_world_experiment"
+  seed: 42
+  device: "auto"
+
+agent:
+  type: "rl2"
+  input_dim: 27  # 5x5 grid + 2 position coords
+  hidden_dim: 128
+  output_dim: 4
+  lr: 0.001
+  gamma: 0.99
+  entropy_coef: 0.01
+  value_coef: 0.5
+
+env:
+  type: "grid_world"
+  n_arms: 2
+  size: 5
+  max_steps: 50
+
+training:
+  episodes: 5000
+  adaptation_steps: 10
+  eval_frequency: 200
+  save_frequency: 1000
+  log_frequency: 20
+
+logging:
+  use_wandb: false
+  use_tensorboard: true
+  log_dir: "logs"
+  save_dir: "checkpoints"

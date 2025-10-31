@@ -1,0 +1,33 @@
+experiment:
+  name: "meta_rl_bandit_experiment"
+  seed: 42
+  device: "auto"
+
+agent:
+  type: "rl2"
+  input_dim: 3
+  hidden_dim: 64
+  output_dim: 2
+  lr: 0.001
+  gamma: 0.99
+  entropy_coef: 0.01
+  value_coef: 0.5
+
+env:
+  type: "bandit"
+  n_arms: 2
+  size: 5
+  max_steps: 50
+
+training:
+  episodes: 3000
+  adaptation_steps: 5
+  eval_frequency: 100
+  save_frequency: 500
+  log_frequency: 10
+
+logging:
+  use_wandb: false
+  use_tensorboard: true
+  log_dir: "logs"
+  save_dir: "checkpoints"
